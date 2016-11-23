@@ -14,7 +14,7 @@ worker_heartbeat_timeout: 7500
 # Logger info
 logging:
   level: warn
-  name: trending-edits
+  name: trendingedits
   streams: 
     - host: <%= logstash_host %>
       port: <%= logstash_port %>
@@ -25,13 +25,13 @@ logging:
 
 # Statsd metrics reporter
 metrics: 
-  name: trending-edits
+  name: trendingedits
   host: <%= metrics_host %>
   port: <%= metrics_port %>
   type: statsd
 
 services:
-  - name: trending-edits
+  - name: trendingedits
     # a relative path or the name of an npm package, if different from name
     module: ./src/app.js
     # per-service config
