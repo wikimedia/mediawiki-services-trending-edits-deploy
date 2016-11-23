@@ -1,20 +1,20 @@
 # Number of worker processes to spawn.
 # Set to 0 to run everything in a single process without clustering.
 # Use 'ncpu' to run as many workers as there are CPU units
-num_workers: <%= num_workers %>
+num_workers: 2
 
 # Log error messages and gracefully restart a worker if v8 reports that it
 # uses more heap (note: not RSS) than this many mb.
-worker_heap_limit_mb: <%= worker_heap_limit_mb %>
+worker_heap_limit_mb: 500
 
 # The maximum interval in ms that can pass between two beat messages
 # sent by each worker to the master before it is killed
-worker_heartbeat_timeout: <%= worker_heartbeat_timeout %>
+worker_heartbeat_timeout: 7500
 
 # Logger info
 logging:
   level: warn
-  name: <%= log_name %>
+  name: trending-edits
   streams: 
     - host: <%= logstash_host %>
       port: <%= logstash_port %>
@@ -25,13 +25,13 @@ logging:
 
 # Statsd metrics reporter
 metrics: 
-  name: <%= metrics_name %>
+  name: trending-edits
   host: <%= metrics_host %>
   port: <%= metrics_port %>
   type: statsd
 
 services:
-  - name: <%= name %>
+  - name: trending-edits
     # a relative path or the name of an npm package, if different from name
     module: ./src/app.js
     # per-service config
@@ -42,7 +42,7 @@ services:
       # the location of the spec, defaults to spec.yaml if not specified
       # spec: ./spec.template.yaml
       # allow cross-domain requests to the API (default '*')
-      cors: '*'
+      # cors: '*'
       # to disable use:
       # cors: false
       # to restrict to a particular domain, use:
@@ -50,7 +50,7 @@ services:
       # content for the CSP headers
       # csp: false  # uncomment this line to disable sending them
       # URL of the outbound proxy to use (complete with protocol)
-      proxy: <%= proxy if proxy else '' %>
+      # proxy: <%= proxy if proxy else '' %>
       # the list of domains for which not to use the proxy defined above
       # no_proxy_list:
       #   - domain1.com
@@ -65,3 +65,13 @@ services:
       #   - if-match
       #   - user-agent
       #   - x-request-id
+      # the user agent to use when issuing requests
+      user_agent: WMF Trending Edits
+      # which datacenters to consume edit events from
+      consume_dc: [ <%= site %> ]
+      # calculate trending for one hour
+      trending_period: 60
+      # the number of edits needed to take a page into account
+      min_edits: 6
+      # the list of Kafka brokers to contact
+      broker_list: <%= broker_list %>

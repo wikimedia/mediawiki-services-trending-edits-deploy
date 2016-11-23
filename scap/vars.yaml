@@ -1,18 +1,12 @@
-# general
-num_workers: 0
-worker_heap_limit_mb: 250
-worker_heartbeat_timeout: 7500
 # log-related variables
-log_name: trendingedits
 logstash_host: localhost
 logstash_port: 12201
 log_file: /tmp/trendingedits.log
 # metrics
-metrics_name: trendingedits
 metrics_host: localhost
 metrics_port: 8125
 # service
-name: trendingedits
 port: 6699
 proxy: 
-
+site: datacenter1
+broker_list: localhost:9092
