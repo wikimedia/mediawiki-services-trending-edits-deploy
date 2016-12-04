@@ -69,8 +69,20 @@ services:
       user_agent: WMF Trending Edits
       # which datacenters to consume edit events from
       consume_dc: [ <%= site %> ]
+      # purge contents of store after this number of events
+      purge_period: 100
+      # the service's purge strategy parameters
+      purge_strategy:
+        # maximum number of pages that can be stored at any given time
+        max_pages: 5000
+        # maximum time in minutes a page can go without edits
+        max_inactivity: 40
+        # maximum age allowed in minutes
+        max_age: 1440
+        # minimum speed in edits per minute that a page is kept around
+        min_speed: 0.1
       # calculate trending for one hour
-      trending_period: 60
+      trending_period: 3600
       # the number of edits needed to take a page into account
       min_edits: 6
       # the list of Kafka brokers to contact
