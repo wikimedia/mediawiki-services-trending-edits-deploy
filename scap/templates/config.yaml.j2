@@ -69,6 +69,8 @@ services:
       user_agent: WMF Trending Edits
       # which datacenters to consume edit events from
       consume_dc: [ <%= site %> ]
+      # the number of results to return
+      max_results: 20
       # purge contents of store after this number of events
       purge_period: 100
       # the service's purge strategy parameters
@@ -78,7 +80,7 @@ services:
         # maximum time in minutes a page can go without edits
         max_inactivity: 40
         # maximum age allowed in minutes
-        max_age: 1440
+        max_age: 60
         # minimum speed in edits per minute that a page is kept around
         min_speed: 0.1
       # calculate trending for one hour
