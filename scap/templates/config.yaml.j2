@@ -89,3 +89,18 @@ services:
       min_edits: 6
       # the list of Kafka brokers to contact
       broker_list: <%= broker_list %>
+      # the template used for contacting the MW API
+      mwapi_req:
+        method: post
+        uri: <%= mwapi_uri %>
+        headers:
+          host: '{{request.params.domain}}'
+          user-agent: '{{user-agent}}'
+        body: '{{ default(request.query, {}) }}'
+      # the template used for contacting RESTBase
+      restbase_req:
+        method: '{{request.method}}'
+        uri: <%= restbase_uri %>/{{domain}}/v1/{+path}
+        query: '{{ default(request.query, {}) }}'
+        headers: '{{request.headers}}'
+        body: '{{request.body}}'
