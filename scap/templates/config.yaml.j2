@@ -86,7 +86,7 @@ services:
       # calculate trending for one hour
       trending_period: 3600
       # the number of edits needed to take a page into account
-      min_edits: 6
+      min_edits: <%= min_edits %>
       # the list of Kafka brokers to contact
       broker_list: <%= broker_list %>
       # the template used for contacting the MW API

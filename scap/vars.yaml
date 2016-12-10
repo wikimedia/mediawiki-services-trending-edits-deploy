@@ -9,6 +9,7 @@ metrics_port: 8125
 port: 6699
 proxy: 
 site: datacenter1
+min_edits: 6
 broker_list: localhost:9092
 mwapi_uri: http://localhost/w/api.php
 restbase_uri: http://localhost:7231
