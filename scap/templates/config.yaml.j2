@@ -15,7 +15,10 @@ worker_heartbeat_timeout: 7500
 logging:
   level: warn
   name: trendingedits
-  streams: 
+  sampled_levels:
+    # log ~1 event per minute @10 events/s
+    trace/event: 0.002
+  streams:
     - host: <%= logstash_host %>
       port: <%= logstash_port %>
       type: gelf
@@ -24,7 +27,7 @@ logging:
       type: file
 
 # Statsd metrics reporter
-metrics: 
+metrics:
   name: trendingedits
   host: <%= metrics_host %>
   port: <%= metrics_port %>
