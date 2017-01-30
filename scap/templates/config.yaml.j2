@@ -15,9 +15,6 @@ worker_heartbeat_timeout: 15000
 logging:
   level: warn
   name: trendingedits
-  sampled_levels:
-    # log ~1 event per minute @10 events/s
-    trace/event: 0.002
   streams:
     - host: <%= logstash_host %>
       port: <%= logstash_port %>
