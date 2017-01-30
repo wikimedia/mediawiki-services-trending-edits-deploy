@@ -1,8 +1,8 @@
 checks:
-  endpoints:
-    type: nrpe
-    stage: restart_service
-    command: check_endpoints_trendingedits
+#  endpoints:
+#    type: nrpe
+#    stage: restart_service
+#    command: check_endpoints_trendingedits
   depool:
     type: command
     stage: promote
