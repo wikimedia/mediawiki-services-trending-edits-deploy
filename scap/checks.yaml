@@ -1,8 +1,12 @@
 checks:
-#  endpoints:
-#    type: nrpe
-#    stage: restart_service
-#    command: check_endpoints_trendingedits
+  delay:
+    type: command
+    stage: restart_service
+    command: sleep 28
+  endpoints:
+    type: nrpe
+    stage: restart_service
+    command: check_endpoints_trendingedits
   depool:
     type: command
     stage: promote
