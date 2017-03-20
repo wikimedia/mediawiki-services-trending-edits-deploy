@@ -83,6 +83,9 @@ services:
         max_age: 1440
         # minimum speed in edits per minute that a page is kept around
         min_speed: 0.1
+        trends_at: # Defines a state where min_speed no longer applies
+          min_edits: 30
+          min_editors: 3
       # the number of edits needed to take a page into account
       min_edits: <%= min_edits %>
       # the list of Kafka brokers to contact
