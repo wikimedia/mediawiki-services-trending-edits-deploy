@@ -1,4 +1,8 @@
 checks:
+  depool:
+    type: command
+    stage: promote
+    command: depool-trendingedits
   delay:
     type: command
     stage: restart_service
@@ -8,10 +12,6 @@ checks:
     type: nrpe
     stage: restart_service
     command: check_endpoints_trendingedits
-  depool:
-    type: command
-    stage: promote
-    command: depool-trendingedits
   repool:
     type: command
     stage: restart_service
