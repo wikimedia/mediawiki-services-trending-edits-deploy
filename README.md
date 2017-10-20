@@ -1,2 +1,2 @@
-Deploy repository for 
-https://git.wikimedia.org/summary/?r=mediawiki/services/trending-edits.git
+Deploy repository for
+https://phabricator.wikimedia.org/diffusion/MSTED/
